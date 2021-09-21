@@ -1,6 +1,7 @@
-@use "./variable_defaults" as defaults;
-@use "./mixins";
+@use './variable_defaults' as defaults;
+@use './mixins';
 
+//$breakpoint-medium: defaults.$breakpoint-medium !default;
 $breakpoint-medium: defaults.$breakpoint-medium !default;
 $breakpoint-large: defaults.$breakpoint-large !default;
 
@@ -15,7 +16,6 @@ $trigger-span-large: defaults.$trigger-span-large !default;
     grid-auto-flow: row dense;
 
     .gh-ct2 {
-
         &__trigger {
             grid-column-start: span $trigger-span-small;
 
@@ -29,7 +29,7 @@ $trigger-span-large: defaults.$trigger-span-large !default;
         }
 
         &__target {
-            @include mixins.slide-open(300, "active");
+            @include mixins.slide-open(300, 'active');
 
             grid-column: span $grid-column-count;
 

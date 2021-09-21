@@ -1,5 +1,5 @@
-@use "./variable_defaults" as defaults;
-@use "./mixins";
+@use './variable_defaults' as defaults;
+@use './mixins';
 
 $close-icon: defaults.$close-icon !default;
 $close-button-size: defaults.$close-button-size !default;

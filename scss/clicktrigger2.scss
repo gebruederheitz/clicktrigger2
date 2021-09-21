@@ -1,4 +1,4 @@
-@use "./variable_defaults" as defaults;
+@use './variable_defaults' as defaults;
 
 $breakpoint-medium: defaults.$breakpoint-medium !default;
 $breakpoint-large: defaults.$breakpoint-large !default;
@@ -11,19 +11,19 @@ $trigger-span-large: defaults.$trigger-span-large !default;
 $close-icon: defaults.$close-icon !default;
 $close-button-size: defaults.$close-button-size !default;
 
-@use "./flex" with (
-    $breakpoint-medium: $breakpoint-medium,
-    $breakpoint-large: $breakpoint-large,
-);
+@use './flex' with
+    (
+        $breakpoint-medium: $breakpoint-medium,
+        $breakpoint-large: $breakpoint-large
+    );
 
-@use "./grid" with (
-    $grid-column-count: $grid-column-count,
-    $trigger-span-small: $trigger-span-small,
-    $trigger-span-medium: $trigger-span-medium,
-    $trigger-span-large: $trigger-span-large,
-);
+@use './grid' with
+    (
+        $grid-column-count: $grid-column-count,
+        $trigger-span-small: $trigger-span-small,
+        $trigger-span-medium: $trigger-span-medium,
+        $trigger-span-large: $trigger-span-large
+    );
 
-@use "./close-button" with (
-    $close-icon: $close-icon,
-    $close-button-size: $close-button-size,
-);
+@use './close-button' with
+    ($close-icon: $close-icon, $close-button-size: $close-button-size);

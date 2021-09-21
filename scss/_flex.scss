@@ -1,5 +1,5 @@
-@use "./variable_defaults" as defaults;
-@use "./mixins";
+@use './variable_defaults' as defaults;
+@use './mixins';
 
 $breakpoint-medium: defaults.$breakpoint-medium !default;
 $breakpoint-large: defaults.$breakpoint-large !default;
@@ -10,7 +10,6 @@ $breakpoint-large: defaults.$breakpoint-large !default;
     justify-content: space-between;
 
     .gh-ct2 {
-
         &__trigger,
         [aria-controls] {
             display: flex;

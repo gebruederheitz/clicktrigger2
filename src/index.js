@@ -1,6 +1,5 @@
 import whenDomReady from 'when-dom-ready';
-import {FactoryDOMConfig, FactoryDataAttributeConfig} from './Factory';
-
+import { FactoryDOMConfig, FactoryDataAttributeConfig } from './Factory';
 
 ///////////////////////////////////////////////
 // Find the appropriate Factory class and    //
@@ -10,7 +9,7 @@ import {FactoryDOMConfig, FactoryDataAttributeConfig} from './Factory';
 const createFactory = () => {
     if (document.gh && document.gh.clicktrigger) {
         return new FactoryDOMConfig();
-    } else  if (document.querySelectorAll('[data-triggertarget]').length) {
+    } else if (document.querySelectorAll('[data-triggertarget]').length) {
         return new FactoryDataAttributeConfig();
     }
 };
