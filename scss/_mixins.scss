@@ -1,0 +1,60 @@
+@mixin unstyled-button($fg: inherit) {
+    background: transparent;
+    background-clip: padding-box;
+    border: 0;
+    border-radius: 0;
+    color: $fg;
+    display: inline-block;
+    line-height: normal;
+    padding: 0;
+    text-align: left;
+    text-decoration: none;
+    text-shadow: none;
+    white-space: nowrap;
+    width: auto;
+
+    &:active,
+    &:hover,
+    &:focus {
+        background: transparent;
+        color: $fg;
+        text-decoration: underline;
+    }
+
+    &:focus {
+        box-shadow: none;
+        z-index: auto;
+    }
+}
+
+/**
+    Slide an element open downwards using the .visible class. Provide the
+    animation duration in ms as the parameter (default 300ms).
+    You can provide additional visible styles as content.
+ */
+@mixin slide-open ($slide-duration: 300, $visible-class: "visible") {
+    margin-bottom: 0;
+    margin-top: 0;
+    max-height: 0;
+    opacity: 0;
+    overflow: hidden;
+    padding-top: 0;
+    padding-bottom: 0;
+    visibility: hidden;
+    transition:
+            max-height #{$slide-duration}ms ease 0s,
+            margin-bottom #{$slide-duration}ms ease 0s,
+            margin-top #{$slide-duration}ms ease 0s,
+            padding-bottom #{$slide-duration}ms ease 0s,
+            padding-top #{$slide-duration}ms ease 0s,
+            opacity 0ms #{$slide-duration + 1}ms,
+            visibility 0ms #{$slide-duration + 1}ms;
+
+    &.#{$visible-class} {
+        max-height: 200vh;
+        opacity: 1;
+        visibility: visible;
+        transition: max-height #{$slide-duration}ms ease 1ms, opacity 0ms 0ms, visibility 0ms 0ms;
+        @content;
+    }
+}

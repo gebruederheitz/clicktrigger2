@@ -1,0 +1,28 @@
+@use "./variable_defaults" as defaults;
+@use "./mixins";
+
+$close-icon: defaults.$close-icon !default;
+$close-button-size: defaults.$close-button-size !default;
+
+.gh-ct2__close {
+    @include mixins.unstyled-button();
+
+    padding: 0.5rem;
+    position: absolute;
+    right: 1rem;
+    top: 1rem;
+
+    .gh-ct2__close-icon {
+        background-image: $close-icon;
+        background-repeat: no-repeat;
+        background-size: contain;
+        display: block;
+        height: $close-button-size;
+        transition: transform 200ms ease;
+        width: $close-button-size;
+    }
+
+    &:hover .gh-ct2__close-icon {
+        transform: scale(1.2);
+    }
+}

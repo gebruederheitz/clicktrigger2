@@ -1,0 +1,12 @@
+$breakpoint-medium: 786px;
+$breakpoint-large: 1024px;
+
+$grid-column-count: 12;
+$trigger-span-small: 12;
+$trigger-span-medium: 6;
+$trigger-span-large: 3;
+
+$close-icon: url(
+"data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%234a4d4a' viewBox='0 0 16 16'%3E%3Cpath d='M2.697.657l12.728 12.728-2.122 2.121L.575 2.778z'/%3E%3Cpath d='M15.425 2.778L2.697 15.506.575 13.385 13.303.657z'/%3E%3C/svg%3E"
+);
+$close-button-size: 1.2rem;

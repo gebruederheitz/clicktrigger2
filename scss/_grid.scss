@@ -1,0 +1,41 @@
+@use "./variable_defaults" as defaults;
+@use "./mixins";
+
+$breakpoint-medium: defaults.$breakpoint-medium !default;
+$breakpoint-large: defaults.$breakpoint-large !default;
+
+$grid-column-count: defaults.$grid-column-count !default;
+$trigger-span-small: defaults.$trigger-span-small !default;
+$trigger-span-medium: defaults.$trigger-span-medium !default;
+$trigger-span-large: defaults.$trigger-span-large !default;
+
+.gh-ct2--grid {
+    display: grid;
+    grid-template-columns: repeat($grid-column-count, 1fr);
+    grid-auto-flow: row dense;
+
+    .gh-ct2 {
+
+        &__trigger {
+            grid-column-start: span $trigger-span-small;
+
+            @media screen and (min-width: $breakpoint-medium) {
+                grid-column-start: span $trigger-span-medium;
+            }
+
+            @media screen and (min-width: $breakpoint-large) {
+                grid-column-start: span $trigger-span-large;
+            }
+        }
+
+        &__target {
+            @include mixins.slide-open(300, "active");
+
+            grid-column: span $grid-column-count;
+
+            @media screen and (min-width: $breakpoint-medium) {
+                grid-column-start: span $grid-column-count;
+            }
+        }
+    }
+}

@@ -1,0 +1,48 @@
+@use "./variable_defaults" as defaults;
+@use "./mixins";
+
+$breakpoint-medium: defaults.$breakpoint-medium !default;
+$breakpoint-large: defaults.$breakpoint-large !default;
+
+.gh-ct2--flex {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
+
+    .gh-ct2 {
+
+        &__trigger,
+        [aria-controls] {
+            display: flex;
+            flex: 0 0 100%;
+            transition: filter 200ms ease;
+
+            @media screen and (min-width: 786px) {
+                flex-basis: 33.3333%;
+            }
+
+            @media screen and (min-width: $breakpoint-large) {
+                flex-basis: 20%;
+            }
+
+            &.gh-saturation-filter {
+                filter: saturate(50%);
+
+                &.active {
+                    filter: saturate(100%);
+                }
+
+                &.inactive {
+                    filter: saturate(0%);
+                }
+            }
+        }
+
+        &__target {
+            @include mixins.slide-open(300, 'active');
+
+            flex-basis: 100%;
+            position: relative;
+        }
+    }
+}
