@@ -1,4 +1,3 @@
-import arrayFrom from 'array-from';
 import { EventEmitter2 as EventEmitter } from 'eventemitter2';
 import _startsWith from 'lodash-es/startsWith';
 
@@ -141,7 +140,7 @@ export class FactoryDataAttributeConfig extends Factory {
 
 	getGlobalConfig () {
 		const confElementList = document.querySelectorAll('[data-triggerglobals]');
-		const confElementArray = arrayFrom(confElementList);
+		const confElementArray = Array.from(confElementList);
 		confElementArray.forEach(element => {
 			const conf = this.parseDatasetToConfig(element.dataset);
 			this.baseConfig = conf;
@@ -149,7 +148,7 @@ export class FactoryDataAttributeConfig extends Factory {
 	}
 
 	getElements () {
-		this.elements = arrayFrom(document.querySelectorAll('[data-triggertarget]'));
+		this.elements = Array.from(document.querySelectorAll('[data-triggertarget]'));
 	}
 
 	init () {

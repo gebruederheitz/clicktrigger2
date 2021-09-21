@@ -1,9 +1,6 @@
 import { EventEmitter2 as EventEmitter } from 'eventemitter2';
 import TargetChangeEvent from './TargetChangeEvent';
 
-// import $ from 'jquery'; // external dependency defined in webpack config –
-// @NB now required conditionally
-
 import {ClickTrigger, LocationTrigger} from './triggers';
 
 let $ = null;
@@ -24,7 +21,7 @@ class Target extends EventEmitter {
 		this.method = config.method;
 
 		if (this.method === 'jQuery') {
-			$ = require('jquery');
+			import('jquery').then(jq => $ =jq);
 		}
 
 		this.onGroupChange = this.onGroupChange.bind(this);
