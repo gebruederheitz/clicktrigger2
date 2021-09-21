@@ -20,7 +20,7 @@ const babelConfig = (bundledHelpers = false) => ({
             }
         ],
     ],
-    plugins: [
+    plugins: bundledHelpers ? [] : [
         '@babel/plugin-transform-runtime',
     ],
 });
@@ -36,7 +36,6 @@ export default [
             file: 'dist/index.mjs',
             format: 'esm',
             globals: {
-                wp: 'wp',
                 jquery: '$',
             },
         },
@@ -49,15 +48,21 @@ export default [
     {
         external: [
             'jquery',
-            /@babel\/runtime/,
         ],
         input: 'src/index.js',
         output: {
             file: 'dist/bundle.js',
             format: 'iife',
+            inlineDynamicImports: true,
+            name: 'ghct2',
+            globals: {
+                jquery: '$',
+            },
         },
         plugins: [
-            resolve(),
+            resolve({
+                browser: true,
+            }),
             babel(babelConfig(true)),
             commonjs(),
             production && terser({
