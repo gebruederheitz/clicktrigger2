@@ -1,9 +1,9 @@
 import { EventEmitter2 as EventEmitter } from 'eventemitter2';
+import $ from 'jquery';
+
 import TargetChangeEvent from './TargetChangeEvent';
 
 import { ClickTrigger, LocationTrigger } from './triggers';
-
-let $ = null;
 
 class Target extends EventEmitter {
     constructor(element, config, trigger) {
@@ -18,10 +18,6 @@ class Target extends EventEmitter {
         this.primaryTrigger = null;
         this.group = null;
         this.method = config.method;
-
-        if (this.method === 'jQuery') {
-            import('jquery').then((jq) => ($ = jq));
-        }
 
         this.onGroupChange = this.onGroupChange.bind(this);
         this.onHideTriggered = this.onHideTriggered.bind(this);
