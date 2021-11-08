@@ -70,6 +70,13 @@ Or use the precompiled CSS file:
 ```
 
 
+### Configuration
+
+#### Using a global DOM object
+
+#### Using data attributes
+
+
 ## Development
 
 You can use the watch task:

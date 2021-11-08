@@ -1,6 +1,6 @@
 {
   "name": "@gebruederheitz/clicktrigger2",
-  "version": "2.2.1",
+  "version": "2.2.2",
   "description": "Turn DOM Elements into triggers that initiate action upon clicking them.",
   "main": "dist/index.mjs",
   "module": "dist/index.mjs",
