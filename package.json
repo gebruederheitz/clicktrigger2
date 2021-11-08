@@ -1,6 +1,6 @@
 {
   "name": "@gebruederheitz/clicktrigger2",
-  "version": "2.2.2",
+  "version": "2.2.4",
   "description": "Turn DOM Elements into triggers that initiate action upon clicking them.",
   "main": "dist/index.mjs",
   "module": "dist/index.mjs",
@@ -42,7 +42,7 @@
     "lodash-es": "^4.17.21",
     "scroll": "^3.0.0",
     "scroll-doc": "^0.2.1",
-    "uuid": "^3.3.2",
+    "uuid": "^8.3.2",
     "when-dom-ready": "^1.2.12"
   },
   "devDependencies": {
