@@ -1,5 +1,5 @@
 import _merge from 'lodash-es/merge';
-import uuid from 'uuid/v4';
+import { v4 as uuid } from 'uuid';
 
 import { DEFAULT_CLASSES } from './defaults';
 
