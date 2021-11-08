@@ -30,12 +30,21 @@ Targets that subscribe to it. Additionally, it keeps track on whether there's
 an element currently open.
 
 ```js
-import { FactoryDOMConfig, FactoryDataAttributeConfig } from '@gh/clicktrigger2';
+import { FactoryDOMConfig, FactoryDataAttributeConfig } from '@gebruederheitz/clicktrigger2';
 ```
 
-Or use the precompiled (ES5 & polyfilled) bundle directly:
+Or use the UMD bundle directly:
 ```html
 <script src="/path/to/node_modules/@gebruederheitz/clicktrigger2/dist/bundle.js"></script>
+<script>
+    const factory = ghct.FactoryDOMConfig;
+</script>
+```
+
+Or use the autoloading bundle that initializes the appropriate factory as soon
+as the DOM is ready:
+```html
+<script src="/path/to/node_modules/@gebruederheitz/clicktrigger2/dist/auto-bundle.js"></script>
 ```
 
 ### Styling
@@ -63,9 +72,21 @@ Or use the precompiled CSS file:
 
 ## Development
 
+You can use the watch task:
+```shell
+$> npm run watch
+# or
+make
+# or, more explicitly
+make dev
+```
+
 After making your changes, run
 ```bash
 npm run build
+# or
+make build
 ```
-to create the ES5 build at `dist/index.js`.
-Bump the version number in `package.json`.
+to create the ES5 build at `dist/bundle.js`, the auto-init bundle at 
+`dist/auto-bundle.js` and the ES-module build at `dist/index.mjs`.
+Bump the version number in `package.json` (or use `yarn publish`).
