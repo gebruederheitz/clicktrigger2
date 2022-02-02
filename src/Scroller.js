@@ -2,7 +2,7 @@ import scroll from 'scroll';
 import page from 'scroll-doc';
 import _debounce from 'lodash-es/debounce';
 
-class Scroller {
+export class Scroller {
     constructor(defaultBuffer) {
         this.defaultBuffer = defaultBuffer || 0;
         this.lastOpenElement = null;
@@ -121,5 +121,3 @@ class Scroller {
         scroll.top(container, distanceTarget);
     }
 }
-
-export default Scroller;

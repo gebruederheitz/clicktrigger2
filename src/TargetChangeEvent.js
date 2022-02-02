@@ -1,4 +1,4 @@
-class TargetChangeEvent {
+export class TargetChangeEvent {
     constructor(emitter, action) {
         this.originalSource = emitter;
         this.action = action;
@@ -11,5 +11,3 @@ class TargetChangeEvent {
         emitter.emit(eventName, this);
     }
 }
-
-export default TargetChangeEvent;

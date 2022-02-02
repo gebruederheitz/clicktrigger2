@@ -3,7 +3,7 @@ import { v4 as uuid } from 'uuid';
 
 import { DEFAULT_CLASSES } from './defaults';
 
-class Config {
+export class Config {
     constructor(base) {
         this.type = 'toggle';
         this.slug = uuid();
@@ -71,5 +71,3 @@ class Config {
         }
     }
 }
-
-export default Config;

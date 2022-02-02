@@ -1,11 +1,12 @@
 import { EventEmitter2 as EventEmitter } from 'eventemitter2';
 import $ from 'jquery';
 
-import TargetChangeEvent from './TargetChangeEvent';
+import { TargetChangeEvent } from './TargetChangeEvent';
 
-import { ClickTrigger, LocationTrigger } from './triggers';
+import { ClickTrigger } from './trigger/click-trigger.js';
+import { LocationTrigger } from './trigger/location-trigger.js';
 
-class Target extends EventEmitter {
+export class Target extends EventEmitter {
     constructor(element, config, trigger) {
         super();
 
@@ -124,5 +125,3 @@ class Target extends EventEmitter {
         this[event]();
     }
 }
-
-export default Target;

@@ -1,7 +1,8 @@
 import { EventEmitter2 as EventEmitter } from 'eventemitter2';
-import { DomRecordKeeper, DomShuffler } from './DomShuffler';
+import { DomRecordKeeper } from './dom-shuffle/dom-record-keeper.js';
+import { DomShuffler } from './dom-shuffle/dom-shuffler.js';
 
-class TriggerGroup extends EventEmitter {
+export class TriggerGroup extends EventEmitter {
     constructor(name) {
         super();
 
@@ -43,5 +44,3 @@ class TriggerGroup extends EventEmitter {
         this.emit('change', this.currentlyOpenElement);
     }
 }
-
-export default TriggerGroup;

@@ -1,5 +1,6 @@
 import whenDomReady from 'when-dom-ready';
-import { FactoryDOMConfig, FactoryDataAttributeConfig } from './Factory';
+import { FactoryDOMConfig } from './factory/dom-config-factory.js';
+import { FactoryDataAttributeConfig } from './factory/data-attribute-factory.js';
 
 ///////////////////////////////////////////////
 // Find the appropriate Factory class and    //

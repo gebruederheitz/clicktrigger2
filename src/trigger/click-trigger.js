@@ -1,6 +1,5 @@
 import { EventEmitter2 as EventEmitter } from 'eventemitter2';
-
-import { ACTIONS_ALLOWED } from './defaults';
+import { ACTIONS_ALLOWED } from '../defaults.js';
 
 export class ClickTrigger extends EventEmitter {
     constructor(element, config, secondary) {
@@ -77,36 +76,4 @@ export class ClickTrigger extends EventEmitter {
             this.element.classList.remove(className);
         });
     }
-} // class ClickTrigger
-
-export class LocationTrigger extends EventEmitter {
-    constructor(factory) {
-        super();
-        // Bind event handlers to instance
-        this.onHashChange = this.onHashChange.bind(this);
-        this.setMaxListeners(50);
-        // this.onStateChange = this.onStateChange.bind(this);
-        // Initialize
-        window.addEventListener('hashchange', this.onHashChange);
-        factory.once('load', this.onHashChange);
-    }
-
-    //----------------------------------------------------[ API / "public" ]----
-
-    // addTarget (target) {
-    // 	return false;
-    // 	target.on('change', this.onStateChange);
-    // }
-
-    //----------------------------------------------------[ Event emitters ]----
-
-    onHashChange() {
-        const currentHash = window.location.hash.slice(1) || '';
-        this.emit(currentHash);
-    }
-
-    //----------------------------------------------------[ Event handlers ]----
-
-    // onStateChange (targetSlug, activate, activeClassName, inactiveClassName) {
-    // }
-} // class LocationTrigger
+}
