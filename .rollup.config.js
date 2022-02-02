@@ -56,7 +56,7 @@ const builds = [
             'jquery',
             /@babel\/runtime/,
         ],
-        input: 'src/Factory.js',
+        input: 'src/index.js',
         output: {
             file: 'dist/index.mjs',
             format: 'esm',
