@@ -15,6 +15,7 @@ class Config {
             doScroll: false,
             buffer: '',
             scrollBack: true,
+            breakpoints: null,
         };
         this.reposition = false;
         if (base && base instanceof Config) {
