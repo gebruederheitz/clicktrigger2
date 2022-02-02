@@ -48,8 +48,6 @@ export class Scroller {
                     ) {
                         doScroll = false;
                     } else {
-                        if (breakpointConfig.locationOnly) {
-                        }
                         buffer = this.parseBuffer(breakpointConfig.buffer);
                     }
                     break;
