@@ -36,10 +36,10 @@ class Scroller {
             // Responsive settings through an object of max-widths
             const currentWindowWidth = window.innerWidth || 0;
             const sortedBreakpoints = Object.keys(config.breakpoints).sort(
-                (a, b) => a > b
+                (a, b) => b > a
             );
             for (let breakpoint in sortedBreakpoints) {
-                if (currentWindowWidth < breakpoint) {
+                if (currentWindowWidth > breakpoint) {
                     const breakpointConfig = config.breakpoints[breakpoint];
                     if (!breakpointConfig.doScroll) {
                         doScroll = false;

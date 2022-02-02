@@ -74,6 +74,39 @@ Or use the precompiled CSS file:
 
 #### Using a global DOM object
 
+##### Scrolling
+
+You can define breakpoints to customise scrolling behaviour for different screen
+sizes:
+
+```js
+let config = {
+    // ...
+    scroll: {
+        doScroll: true,
+        breakpoints: {
+            0: {
+               doScroll: true,
+               buffer: 50,
+            },
+            756: {
+                doScroll: false,
+            },
+            1200: {
+                doScroll: true,
+                buffer: '100vh',
+            },
+        },
+    },
+};
+```
+
+This configuration will
+ - scroll 100vh on screens wider than 1200px,
+ - _not_ scroll on screens between 756px and 1200px, 
+ - and scroll 50px for any screen narrower than that.
+
+
 #### Using data attributes
 
 
