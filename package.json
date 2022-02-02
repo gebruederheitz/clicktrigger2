@@ -12,7 +12,7 @@
     "lint": "npm-run-all --parallel lint:scripts lint:styles",
     "lint:scripts": "eslint src/",
     "lint:styles": "stylelint scss/",
-    "prepublishOnly": "npm run lint && npm run build",
+    "#SKIP#prepublishOnly": "npm run lint && npm run build",
     "release": "release-it --only-version",
     "start": "npm run watch",
     "test": "echo \"Error: no test specified\" && exit 1",
