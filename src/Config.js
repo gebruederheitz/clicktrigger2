@@ -16,6 +16,7 @@ export class Config {
             buffer: '',
             scrollBack: true,
             breakpoints: null,
+            locationOnly: false,
         };
         this.reposition = false;
         if (base && base instanceof Config) {

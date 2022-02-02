@@ -17,7 +17,7 @@ export class LocationTrigger extends EventEmitter {
 
     onHashChange() {
         const currentHash = window.location.hash.slice(1) || '';
-        this.emit(currentHash);
+        this.emit(currentHash, this);
     }
 
     //----------------------------------------------------[ Event handlers ]----

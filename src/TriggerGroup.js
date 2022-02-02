@@ -29,12 +29,12 @@ export class TriggerGroup extends EventEmitter {
     }
 
     handleTargetChange(event) {
-        const { action, originalSource } = event;
-        if (action == 'show' && originalSource != this.currentlyOpenElement) {
-            this.currentlyOpenElement = originalSource;
+        const { action, source } = event;
+        if (action === 'show' && source !== this.currentlyOpenElement) {
+            this.currentlyOpenElement = source;
             this.emitChangeEvent();
         }
-        if (action == 'hide' && originalSource == this.currentlyOpenElement) {
+        if (action === 'hide' && source === this.currentlyOpenElement) {
             this.currentlyOpenElement = null;
             this.emitChangeEvent();
         }

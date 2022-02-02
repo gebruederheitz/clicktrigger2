@@ -41,7 +41,7 @@ export class ClickTrigger extends EventEmitter {
     //----------------------------------------------------[ (Hybrid) ]----------
 
     onClick() {
-        this.emit(this.action);
+        this.emit(this.action, this);
     }
 
     //----------------------------------------------------[ Event handlers ]----
@@ -49,12 +49,12 @@ export class ClickTrigger extends EventEmitter {
     onGroupChange(currentlyOpenElement) {
         if (
             currentlyOpenElement === null ||
-            currentlyOpenElement == this.target
+            currentlyOpenElement === this.target
         ) {
             this.classes.contrast.forEach((className) => {
                 this.element.classList.remove(className);
             });
-        } else if (currentlyOpenElement != this.target) {
+        } else if (currentlyOpenElement !== this.target) {
             this.classes.contrast.forEach((className) => {
                 this.element.classList.add(className);
             });
@@ -62,7 +62,7 @@ export class ClickTrigger extends EventEmitter {
     }
 
     onTargetChange(event) {
-        const isShowEvent = event.action == 'show';
+        const isShowEvent = event.action === 'show';
         const classToAdd = isShowEvent
             ? this.classes.active
             : this.classes.inactive;

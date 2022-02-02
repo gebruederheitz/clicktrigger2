@@ -42,7 +42,6 @@ export class Target extends EventEmitter {
         if (!this.primaryTrigger && !trigger.isSecondary) {
             this.primaryTrigger = trigger;
         }
-        // this.emit('trigger.added', trigger);
     }
 
     addLocationTrigger(trigger) {
@@ -104,24 +103,24 @@ export class Target extends EventEmitter {
         }
     }
 
-    onHideTriggered() {
+    onHideTriggered(eventSource) {
         if (!this.isOpen) return;
         this.isOpen = false;
-        new TargetChangeEvent(this, 'hide');
+        new TargetChangeEvent(this, 'hide', eventSource);
         this.hide();
     }
 
-    onShowTriggered() {
+    onShowTriggered(eventSource) {
         if (this.isOpen) return;
         this.isOpen = true;
-        new TargetChangeEvent(this, 'show');
+        new TargetChangeEvent(this, 'show', eventSource);
         this.show();
     }
 
-    onToggleTriggered() {
+    onToggleTriggered(eventSource) {
         const event = this.isOpen ? 'hide' : 'show';
         this.isOpen = !this.isOpen;
-        new TargetChangeEvent(this, event);
+        new TargetChangeEvent(this, event, eventSource);
         this[event]();
     }
 }

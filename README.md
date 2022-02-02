@@ -12,7 +12,7 @@ _Turn DOM Elements into triggers that initiate action upon clicking them._
 
 ## Usage
 
-Clicktrigger2 is a  utility to easily attach mouse click listeners and events 
+Clicktrigger2 is a utility to easily attach mouse click listeners and events
 to DOM elements using classnames, data-attributes or a script config.
 
 `Factory` serves more or less as an abstract class for the different
@@ -49,7 +49,7 @@ as the DOM is ready:
 
 ### Styling
 
-You may use and extend the default styles provided by this package in your 
+You may use and extend the default styles provided by this package in your
 (S)CSS:
 ```sass
 // Your frontend SASS file
@@ -63,9 +63,9 @@ You may use and extend the default styles provided by this package in your
 
 Or use the precompiled CSS file:
 ```html
-<link 
-  rel="stylesheet"
-  href="/path/to/node_modules/@gebruederheitz/clicktrigger2/dist/clicktrigger2.css"
+<link
+    rel="stylesheet"
+    href="/path/to/node_modules/@gebruederheitz/clicktrigger2/dist/clicktrigger2.css"
 />
 ```
 
@@ -86,8 +86,8 @@ let config = {
         doScroll: true,
         breakpoints: {
             0: {
-               doScroll: true,
-               buffer: 50,
+                doScroll: true,
+                buffer: 50,
             },
             756: {
                 doScroll: false,
@@ -102,10 +102,45 @@ let config = {
 ```
 
 This configuration will
- - scroll 100vh on screens wider than 1200px,
- - _not_ scroll on screens between 756px and 1200px, 
- - and scroll 50px for any screen narrower than that.
+- scroll 100vh on screens wider than 1200px,
+- _not_ scroll on screens between 756px and 1200px,
+- and scroll 50px for any screen narrower than that.
 
+You can also apply scrolling _only_ when the target is being triggered by a
+`LocationTrigger`, i.e. in response to a navigation or hashchange event, but not
+when targeted by a `ClickTrigger`, i.e. a mouse click / tap.
+
+```js
+let config = {
+    // ...
+    scroll: {
+        doScroll: true,
+        locationOnly: true,
+        buffer: 50,
+    },
+};
+
+// Can also be used with breakpoints:
+config = {
+    scroll: {
+        doScroll: true,
+        breakpoints: {
+            0: {
+                doScroll: true,
+                locationOnly: true,
+                buffer: 50,
+            },
+            756: {
+                doScroll: false,
+            },
+            1200: {
+                doScroll: true,
+                buffer: '100vh',
+            },
+        },
+    },
+};
+```
 
 #### Using data attributes
 
@@ -114,10 +149,10 @@ This configuration will
 
 ### Dependencies
 
- - nodeJS LTS (16.x)
- - nice to have:
-   - GNU make or drop-in alternative
-   - NVM
+- nodeJS LTS (16.x)
+- nice to have:
+    - GNU make or drop-in alternative
+    - NVM
 
 ### Quickstart
 
@@ -136,6 +171,6 @@ npm run build
 # or
 make build
 ```
-to create the ES5 build at `dist/bundle.js`, the auto-init bundle at 
+to create the ES5 build at `dist/bundle.js`, the auto-init bundle at
 `dist/auto-bundle.js` and the ES-module build at `dist/index.mjs`.
 Bump the version number in `package.json` (or use `yarn publish`).

@@ -1,6 +1,7 @@
 export class TargetChangeEvent {
-    constructor(emitter, action) {
-        this.originalSource = emitter;
+    constructor(emitter, action, originalSource = null) {
+        this.source = emitter;
+        this.originalSource = null;
         this.action = action;
         this.scroll = emitter.config.scroll.doScroll;
         this.scrollBack = emitter.config.scroll.scrollBack || false;

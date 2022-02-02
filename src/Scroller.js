@@ -1,6 +1,7 @@
 import scroll from 'scroll';
 import page from 'scroll-doc';
 import _debounce from 'lodash-es/debounce';
+import { LocationTrigger } from './trigger/location-trigger.js';
 
 export class Scroller {
     constructor(defaultBuffer) {
@@ -28,7 +29,7 @@ export class Scroller {
         }
     }
 
-    parseScrollConfig(config) {
+    parseScrollConfig(config, fromLocationTrigger) {
         let doScroll = true;
         let buffer = 0;
 
@@ -41,9 +42,14 @@ export class Scroller {
             for (let breakpoint in sortedBreakpoints) {
                 if (currentWindowWidth > breakpoint) {
                     const breakpointConfig = config.breakpoints[breakpoint];
-                    if (!breakpointConfig.doScroll) {
+                    if (
+                        !breakpointConfig.doScroll ||
+                        (breakpointConfig.locationOnly && !fromLocationTrigger)
+                    ) {
                         doScroll = false;
                     } else {
+                        if (breakpointConfig.locationOnly) {
+                        }
                         buffer = this.parseBuffer(breakpointConfig.buffer);
                     }
                     break;
@@ -63,7 +69,12 @@ export class Scroller {
     onTargetChange(event) {
         if (!(event.scroll || event.scrollBack)) return;
 
-        const src = event.originalSource;
+        const fromLocationTrigger =
+            event.originalSource instanceof LocationTrigger;
+
+        if (event.scrollConfig.locationOnly && !fromLocationTrigger) return;
+
+        const src = event.source;
         let element;
         let topMargin;
 
@@ -72,7 +83,8 @@ export class Scroller {
             this.lastOpenElement = src;
             element = src.getElement();
             const { doScroll, buffer } = this.parseScrollConfig(
-                event.scrollConfig
+                event.scrollConfig,
+                fromLocationTrigger
             );
             if (!doScroll) return;
             topMargin = buffer;
