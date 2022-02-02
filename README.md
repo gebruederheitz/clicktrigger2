@@ -79,6 +79,15 @@ Or use the precompiled CSS file:
 
 ## Development
 
+### Dependencies
+
+ - nodeJS LTS (16.x)
+ - nice to have:
+   - GNU make or drop-in alternative
+   - NVM
+
+### Quickstart
+
 You can use the watch task:
 ```shell
 $> npm run watch
