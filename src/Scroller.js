@@ -39,7 +39,7 @@ export class Scroller {
             const sortedBreakpoints = Object.keys(config.breakpoints).sort(
                 (a, b) => b > a
             );
-            for (let breakpoint in sortedBreakpoints) {
+            for (let breakpoint of sortedBreakpoints) {
                 if (currentWindowWidth > breakpoint) {
                     const breakpointConfig = config.breakpoints[breakpoint];
                     if (
