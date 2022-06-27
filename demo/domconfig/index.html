@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="utf8" />
+    <title>
+        ClickTrigger Demo & Test Page
+    </title>
+    <link rel="stylesheet" href="/dist/clicktrigger2.css" />
+    <link rel="stylesheet" href="/nav.css" />
+    <style>
+        body {
+            font-family: sans-serif;
+            padding-bottom: 200vh;
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        main {
+            padding: 1rem 5vw;
+        }
+
+        .flex-container {
+            display: flex;
+            max-width: 90vw;
+            justify-content: space-around;
+        }
+        .flex-item {
+            border: 1px solid black;
+            padding: 40px;
+            margin: 5px;
+        }
+        .target {
+            background-color: red;
+            transition: background-color 400ms;
+            /* opacity: 0;
+            visibility: hidden; */
+            display: none;
+            margin-top: 0;
+        }
+        .target.gh-ct-visible {
+            background-color: green;
+            opacity: 1;
+            visibility: visible;
+            display: block;
+        }
+        .trigger {
+            transition: background-color 400ms;
+            margin-bottom: 0;
+        }
+        .trigger.gh-trigger-inactive {
+            border: 1px solid #ccc;
+        }
+        .trigger.gh-trigger-contrast {
+            background-color: rgba(88, 9, 88, 0.3);
+        }
+
+        .flex-container.columns {
+            flex-flow: row wrap;
+            margin-top: 120px;
+        }
+
+        .columns .trigger {
+            flex: 1 0 220px;
+        }
+        .columns .target {
+            flex: 1 0 100%;
+        }
+    </style>
+<!--    <script defer src="/demo-bundle.js"></script>-->
+    <script async src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script>
+    <script defer src="/dist/auto-bundle.js"></script>
+
+</head>
+
+<body>
+    <iframe class="nav" src="/nav.html"></iframe>
+
+    <h1>ClickTrigger2 Demo Page – DOM Config & jQuery Animations</h1>
+
+    <main>
+        <div class="domconfig-container flex-container columns">
+           <script>
+               document.gh = {
+                   clicktrigger: {
+                       scroll: {
+                           doScroll: true,
+                           buffer: '10%'
+                       },
+                       reposition: true,
+                       elements: []
+                   }
+               };
+           </script>
+            <div class="trigger flex-item">
+                <div class="triggerconf" data-trigger="a-slug-for-testing">
+                    My little Trigger
+                </div>
+            </div>
+            <div class="trigger flex-item">
+                <div class="triggerconf" data-trigger="green">
+                    A new triggerelement
+                </div>
+            </div>
+
+            <div class="target flex-item">
+                <div class="triggerconf" data-trigger="a-slug-for-testing"></div>
+                <div class="trigger-second">
+                    <div class="triggerconf" data-trigger="a-slug-for-testing">
+                        [x]
+                    </div>
+                </div>
+                A target for testing
+                <script>
+                    document.gh.clicktrigger.elements.push({
+                        triggers: [
+                            {element: '$parent::.trigger [data-trigger="a-slug-for-testing"]', type: 'toggle'},
+                            {element: '$parent::.trigger-second [data-trigger="a-slug-for-testing"]', type: 'hide', secondary: true}
+                        ],
+                        target: '$parent::.target [data-trigger="a-slug-for-testing"]',
+                        slug: 'a-slug-for-testing',
+                        groupName: 'mycoolgroup',
+                    });
+                </script>
+            </div>
+
+            <div class="target flex-item">
+                <div class="triggerconf" data-trigger="green"></div>
+                <div class="trigger-second">
+                    <div class="triggerconf" data-trigger="green">
+                        [x]
+                    </div>
+                </div>
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                <script>
+                    document.gh.clicktrigger.elements.push({
+                        triggers: [
+                            {element: '$parent::.trigger [data-trigger="green"]', type: 'toggle'},
+                            {element: '$parent::.trigger-second [data-trigger="green"]', type: 'hide', secondary: true}
+                        ],
+                        target: '$parent::.target [data-trigger="green"]',
+                        slug: 'green',
+                        groupName: 'mycoolgroup',
+                    });
+                </script>
+            </div>
+        </div>
+
+
+    </main>
+</body>

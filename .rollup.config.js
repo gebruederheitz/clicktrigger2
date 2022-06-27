@@ -5,7 +5,6 @@ import { terser } from 'rollup-plugin-terser';
 import livereload from 'rollup-plugin-livereload';
 
 const production = !process.env.ROLLUP_WATCH;
-const runTestImplementation = false;
 
 function serve() {
     let server;
@@ -50,7 +49,7 @@ const babelConfig = (bundledHelpers = false) => ({
     ],
 });
 
-const builds = [
+export default [
     {
         external: [
             'jquery',
@@ -63,7 +62,7 @@ const builds = [
             sourcemap: true,
             inlineDynamicImports: true,
             globals: {
-                jquery: '$',
+                jquery: 'jQuery',
             },
         },
         plugins: [
@@ -84,7 +83,7 @@ const builds = [
             name: 'ghct2',
             sourcemap: true,
             globals: {
-                jquery: '$',
+                jquery: 'jQuery',
             },
         },
         plugins: [
@@ -124,7 +123,7 @@ const builds = [
             name: 'ghct2',
             sourcemap: true,
             globals: {
-                jquery: '$',
+                jquery: 'jQuery',
             },
         },
         plugins: [
@@ -149,46 +148,15 @@ const builds = [
                         }
                     },
                 },
-            })
-        ],
-    },
-];
-
-
-if (runTestImplementation && !production) {
-    builds.push({
-        input: 'test/test-implementation.js',
-        output: {
-            file: 'demo/demo-bundle.js',
-            format: 'iife',
-            inlineDynamicImports: true,
-            name: 'ghconsentdemo',
-            sourcemap: true,
-        },
-        plugins: [
-            resolve({
-                browser: true,
             }),
-            babel(babelConfig(true)),
-            commonjs(),
-
-            // In dev mode, call `npm run start` once
-            // the bundle has been generated
-            serve(),
-
-            // Watch the `demo` directory and refresh the
-            // browser on changes when not in production
-            // !production && livereload(['./demo/', './dist/']),
-            livereload({
-                watch: './demo/',
-                exclusions: ['build/']
+            !production && livereload({
+                watch: ['./demo/', './dist'],
             }),
         ],
         context: 'window',
         watch: {
             clearScreen: false,
         },
-    });
-}
+    },
 
-export default builds;
+];

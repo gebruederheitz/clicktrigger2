@@ -5,10 +5,21 @@
         ClickTrigger Demo & Test Page
     </title>
     <link rel="stylesheet" href="/dist/clicktrigger2.css" />
+    <link rel="stylesheet" href="/nav.css" />
     <style>
         body {
+            font-family: sans-serif;
             padding-bottom: 200vh;
         }
+
+        h1 {
+            text-align: center;
+        }
+
+        main {
+            padding: 1rem 5vw;
+        }
+
         .flex-container {
             display: flex;
             max-width: 90vw;
@@ -22,8 +33,6 @@
         .target {
             background-color: red;
             transition: background-color 400ms;
-            /* opacity: 0;
-            visibility: hidden; */
             display: none;
             margin-top: 0;
         }
@@ -55,175 +64,86 @@
         .columns .target {
             flex: 1 0 100%;
         }
-        .hidden {
-            display: none;
-        }
-        .box {
-            padding: 20px;
-            border: 1px solid grey;
-            margin: 80px;
-            background-color: rgba(129, 59, 215, 0.69);
-        }
     </style>
+    <script async src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script>
+    <script defer src="/dist/auto-bundle.js"></script>
 
 </head>
 
 <body>
-    <h1>ClickTrigger2 Demo Page – Data Attribute Config</h1>
-    <a href='/example'>Clicking this will take you somewhere!</a>
-    <br/>
-    <br/>
-    <a href='http://haufe-eloqua-tests.ghdev.de/contact/reference-form.html'>And this goes somewhere else entirely! Fascinating!</a>
-    <br/>
-    <br/>
+    <iframe class="nav" src="/nav.html"></iframe>
+    <h1>ClickTrigger2 Demo Page – Data Attribute Config & jQuery Animations</h1>
 
-    <div class="globals" data-triggerglobals="true" data-triggerscroll="30%" data-triggerreposition="true"></div>
-    <div class="flex-container">
-        <div class="flex-item trigger" data-triggertype='toggle' data-triggertarget='#test1' data-triggergroup="gr1" data-triggerslug="test1")>1</div>
-        <div id="#test1" class="flex-item target">(1)</div>
-.flex-item.trigger(data-triggertype='toggle' data-triggertarget='#test2' data-triggergroup="gr1") 2
-#test2.flex-item.target (2)
-.flex-item.trigger(data-triggertype='hide' data-triggertarget="#test2" data-triggergroup='gr1' data-triggersecondary="true") [x]
-.flex-item.trigger(data-triggertype='toggle' data-triggertarget='#test3' data-triggergroup="gr1" data-triggerslug="test3") 3
-#test3.flex-item.target (3)
-.flex-item.trigger(data-triggertype='toggle' data-triggertarget='#test4' data-triggergroup="gr1" data-triggerslug="test4") 4
-#test4.flex-item.target (4)
-.flex-item.trigger(data-triggertype='toggle' data-triggertarget='#test5' data-triggergroup="gr1" data-triggerslug="test5") 5
-#test5.flex-item.target (5)
-.flex-item.trigger(data-triggertype='toggle' data-triggertarget='#test6' data-triggergroup="gr1" data-triggerslug="testtest") 6
-#test6.flex-item.target (6)
-    </div>
+    <main>
 
+        <!-- Globals -->
+        <div
+            class="globals"
+            data-triggerglobals="true"
+            data-triggerscroll="30%"
+            data-triggerreposition="true"
+        ></div>
 
-.flex-container.columns
-.flex-item.trigger(data-triggertype='toggle' data-triggertarget='#blue1' data-triggergroup="gr2" data-triggerslug="blueone") 1
-.flex-item.trigger(data-triggertype='toggle' data-triggertarget='#blue2' data-triggergroup="gr2") 2
-.flex-item.trigger(data-triggertype='toggle' data-triggertarget='#blue3' data-triggergroup="gr2" data-triggerslug="bluethree") 3
-#blue1.flex-item.target (1)
-#blue2.flex-item.target (2)
-.flex-item.trigger(data-triggertype='hide' data-triggertarget="#blue2" data-triggergroup='gr2' data-triggersecondary="true") [x]
-#blue3.flex-item.target (3)
-.flex-item.trigger(data-triggertype='toggle' data-triggertarget='#blue4' data-triggergroup="gr2" data-triggerslug="bluefour") 4
-.flex-item.trigger(data-triggertype='toggle' data-triggertarget='#blue5' data-triggergroup="gr2" data-triggerslug="bluefive") 5
-.flex-item.trigger(data-triggertype='toggle' data-triggertarget='#blue6' data-triggergroup="gr2" data-triggerslug="bluesix") 6
-#blue4.flex-item.target (4)
-#blue5.flex-item.target (5)
-#blue6.flex-item.target (6)
-.domconfig-container.flex-container.columns
-script.
-document.gh = {
-clicktrigger: {
-scroll: {
-doScroll: true,
-buffer: '10%'
-},
-reposition: true,
-elements: []
-}
-};
-.trigger.flex-item
-.triggerconf(data-trigger="a-slug-for-testing")
-| My little Trigger
-.trigger.flex-item
-.triggerconf(data-trigger="green")
-| A new triggerelement
-.domconfig-container.flex-container.columns
-.target.flex-item
-.triggerconf(data-trigger="a-slug-for-testing")
-.trigger-second
-.triggerconf(data-trigger="a-slug-for-testing")
-| [x]
-| A target for testing
-script.
-document.gh.clicktrigger.elements.push({
-triggers: [
-{element: '$parent::.trigger [data-trigger="a-slug-for-testing"]', type: 'toggle'},
-{element: '$parent::.trigger-second [data-trigger="a-slug-for-testing"]', type: 'hide', secondary: true}
-],
-target: '$parent::.target [data-trigger="a-slug-for-testing"]',
-slug: 'a-slug-for-testing',
-groupName: 'mycoolgroup',
-});
-.target.flex-item
-.triggerconf(data-trigger="green")
-.trigger-second
-.triggerconf(data-trigger="green")
-| [x]
-| Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-script.
-document.gh.clicktrigger.elements.push({
-triggers: [
-{element: '$parent::.trigger [data-trigger="green"]', type: 'toggle'},
-{element: '$parent::.trigger-second [data-trigger="green"]', type: 'hide', secondary: true}
-],
-target: '$parent::.target [data-trigger="green"]',
-slug: 'green',
-groupName: 'mycoolgroup',
-});
-.box Load more...
-.triggerconf(data-trigger="loadmore")
-script.
-document.gh.clicktrigger.elements.push({
-triggers: [{element: '$parent::.box [data-trigger="loadmore"]', type: 'show'}],
-reposition: false,
-target: '$parent::.domconfig-container > [data-trigger="loadmore"]'
-})
-document.gh.clicktrigger.elements.push({
-triggers: [{element: '$parent::.box [data-trigger="loadmore"]', type: 'hide'}],
-reposition: false,
-target: '$parent::.box [data-trigger="loadmore"]',
-})
-.domconfig-container.flex-container.columns.hidden
-.triggerconf(data-trigger="loadmore")
-.trigger.flex-item
-.triggerconf(data-trigger="numero-tre")
-| My little Trigger
-.target.flex-item
-.triggerconf(data-trigger="numero-tre")
-.trigger-second
-.triggerconf(data-trigger="numero-tre")
-| [x]
-| A target for testing
-script.
-document.gh.clicktrigger.elements.push({
-triggers: [
-{element: '$parent::.trigger [data-trigger="numero-tre"]', type: 'toggle'},
-{element: '$parent::.trigger-second [data-trigger="numero-tre"]', type: 'hide', secondary: true}
-],
-target: '$parent::.target [data-trigger="numero-tre"]',
-slug: 'numero-tre',
-groupName: 'anothergroup',
-});
-.trigger.flex-item
-.triggerconf(data-trigger="pink")
-| A new triggerelement
-.target.flex-item
-.triggerconf(data-trigger="pink")
-.trigger-second
-.triggerconf(data-trigger="pink")
-| [x]
-| Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-script.
-document.gh.clicktrigger.elements.push({
-triggers: [
-{element: '$parent::.trigger [data-trigger="pink"]', type: 'toggle'},
-{element: '$parent::.trigger-second [data-trigger="pink"]', type: 'hide', secondary: true}
-],
-target: '$parent::.target [data-trigger="pink"]',
-slug: 'pink',
-groupName: 'anothergroup',
-});
-//- a.trigger.flex-item.ioverlay-trigger.button(href="/multifilter" data-ioverlay-fly-in="true") Lightbox Me!
-a.trigger.flex-item.ioverlay-trigger.button(href="/multifilter") Lightbox Me!
-script(type="text/javascript" src="/jquery/jquery.js")
-//script(type='text/javascript' src='/assets/webflow-assets/haufe-webflow-assets/dev/nodeploy/clicktrigger2/script.min.js')
-script(type='text/javascript' src='/assets/webflow-assets/build/utility/ct2.min.js')
-script(src='/assets/webflow-assets/haufe-webflow-assets/projects/util-sticky-parameters/public/sticky-parameters.js')
-script(src='/assets/webflow-assets/haufe-webflow-assets/projects/util-iframe-overlay/public/ioverlay.js')
-script.
-var ioverlay = require('util-ioverlay.js');
-var Factory = ioverlay.OverlayFactory;
-console.log(Factory);
-new Factory().init();
+        <!-- Data attribute test implementation -->
+        <div class="flex-container">
+            <div
+                class="flex-item trigger"
+                data-triggertype='toggle'
+                data-triggertarget='#test1'
+                data-triggergroup="gr1"
+                data-triggerslug="test1"
+            >
+                1
+            </div>
+            <div id="test1" class="flex-item target">(1)</div>
 
+            <div
+                class="flex-item trigger"
+                data-triggertype="toggle"
+                data-triggertarget='#test2'
+                data-triggergroup="gr1"
+            >
+                2
+            </div>
+            <div id="test2" class="flex-item target">
+                (2)
+                <div
+                    class="flex-item trigger"
+                    data-triggertype="hide"
+                    data-triggertarget="#test2"
+                    data-triggergroup="gr1"
+                    data-triggersecondary="true"
+                >
+                    [x]
+                </div>
+            </div>
+
+            <div class="flex-item trigger" data-triggertype="toggle" data-triggertarget="#test3" data-triggergroup="gr1" data-triggerslug="test3">3</div>
+            <div id="test3" class="flex-item target">(3)</div>
+            <div class="flex-item trigger" data-triggertype='toggle' data-triggertarget='#test4' data-triggergroup="gr1" data-triggerslug="test4">4</div>
+            <div id="test4" class="flex-item target">(4)</div>
+            <div class="flex-item trigger" data-triggertype='toggle' data-triggertarget='#test5' data-triggergroup="gr1" data-triggerslug="test5">5</div>
+            <div id="test5" class="flex-item target">(5)</div>
+            <div class="flex-item trigger" data-triggertype='toggle' data-triggertarget='#test6' data-triggergroup="gr1" data-triggerslug="testtest">6</div>
+            <div id="test6" class="flex-item target">(6)</div>
+        </div>
+
+        <div class="flex-container columns">
+            <div class="flex-item trigger" data-triggertype='toggle' data-triggertarget='#blue1' data-triggergroup="gr2" data-triggerslug="blueone">1</div>
+            <div class="flex-item trigger" data-triggertype='toggle' data-triggertarget='#blue2' data-triggergroup="gr2">2</div>
+            <div class="flex-item trigger" data-triggertype='toggle' data-triggertarget='#blue3' data-triggergroup="gr2" data-triggerslug="bluethree">3</div>
+            <div id="blue1" class="flex-item target">(1)</div>
+            <div id="blue2" class="flex-item target">
+                (2)
+                <div class="flex-item trigger" data-triggertype='hide' data-triggertarget="#blue2" data-triggergroup='gr2' data-triggersecondary="true">[x]</div>
+            </div>
+            <div id="blue3" class="flex-item target">(3)</div>
+            <div class="flex-item trigger" data-triggertype='toggle' data-triggertarget='#blue4' data-triggergroup="gr2" data-triggerslug="bluefour">4</div>
+            <div class="flex-item trigger" data-triggertype='toggle' data-triggertarget='#blue5' data-triggergroup="gr2" data-triggerslug="bluefive">5</div>
+            <div class="flex-item trigger" data-triggertype='toggle' data-triggertarget='#blue6' data-triggergroup="gr2" data-triggerslug="bluesix">6</div>
+            <div id="blue4" class="flex-item target">(4)</div>
+            <div id="blue5" class="flex-item target">(5)</div>
+            <div id="blue6" class="flex-item target">(6)</div>
+        </div>
+    </main>
 </body>

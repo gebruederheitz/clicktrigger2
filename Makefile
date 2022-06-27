@@ -1,6 +1,6 @@
 dev:
 	. $$NVM_DIR/nvm.sh && nvm use && \
-	npm i && npm start
+	npm i && npm run watch
 
 build:
 	. $$NVM_DIR/nvm.sh && nvm use && \
