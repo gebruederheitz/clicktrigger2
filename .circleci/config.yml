@@ -1,0 +1,63 @@
+node_version: &node_version '16'
+source_dir: &source_dir clicktrigger2
+version: 2.1
+orbs:
+  gh: gebruederheitz/wordpress-deployment@1
+jobs:
+  deploy:
+    executor:
+      name: gh/linux
+      working_directory: /home/circleci/clicktrigger2
+    steps:
+      - attach_workspace:
+          at: /home/circleci
+      - gh/prepare_ssh_config
+      - add_ssh_keys:
+          fingerprints:
+            - 2e:d4:bd:b4:c5:28:b4:2f:8c:eb:71:c4:c2:f8:88:ce
+      - gh/upload_build:
+          source_dir: clicktrigger2/dist/
+          ssh_target: haufe-group-webs
+          target_dir: /home/projects/cdn.haufe.com/htdocs/wf
+          target_sub_dir: /clicktrigger2
+          #transfer_mode: rsync
+      - gh/slack_notify_on_fail
+      - gh/slack_notify_on_success:
+          target: Production
+          target_url: https://cdn.haufe.com/wf/clicktrigger2/aut-bundle.js
+workflows:
+  version: 2
+  test-build-deploy:
+    jobs:
+      - gh/test:
+          name: test
+          context: slack-secrets
+          node_modules_path: node_modules
+          node_version: *node_version
+          package_lock_path: package-lock.json
+          source_dir: *source_dir
+          filters: &filter_all_tags
+            tags:
+              only: /.*/
+      - gh/build_assets:
+          name: build
+          context: slack-secrets
+          requires:
+            - test
+          checkout: true
+          build_task_name: ci-build
+          node_version: *node_version
+          package_lock_path: package-lock.json
+          source_dir: *source_dir
+          filters:
+            <<: *filter_all_tags
+      - deploy:
+          name: deploy_to_haufe_group_webs_cdn
+          context: slack-secrets
+          requires:
+            - build
+          filters:
+            branches:
+              ignore: /.*/
+            tags:
+              only: /^v?(0|[1-9]\d*)\.(0|[1-9]\d*)\.(0|[1-9]\d*)(?:-((?:0|[1-9]\d*|\d*[a-zA-Z-][0-9a-zA-Z-]*)(?:\.(?:0|[1-9]\d*|\d*[a-zA-Z-][0-9a-zA-Z-]*))*))?(?:\+([0-9a-zA-Z-]+(?:\.[0-9a-zA-Z-]+)*))?$/

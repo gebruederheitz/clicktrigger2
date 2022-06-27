@@ -1,0 +1,11 @@
+Host tunnel.gebruederheitz.de
+ User circleci
+ HostName 116.203.0.127
+ IdentityFile ~/.ssh/id_rsa
+
+Host haufe-group-webs
+ HostName haufe-group-webs.adns.de
+ User gheitz
+ PreferredAuthentications publickey
+ IdentityFile ~/.ssh/id_rsa
+ ProxyCommand ssh circleci@tunnel.gebruederheitz.de -W %h:%p
