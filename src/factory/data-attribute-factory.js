@@ -1,5 +1,7 @@
-import { Factory } from './abstract-factory.js';
+import _startsWith from 'lodash-es/startsWith.js';
 import { EventEmitter2 as EventEmitter } from 'eventemitter2';
+
+import { Factory } from './abstract-factory.js';
 import { LocationTrigger } from '../trigger/location-trigger.js';
 import { ClickTrigger } from '../trigger/click-trigger.js';
 import { Target } from '../Target.js';
@@ -92,8 +94,20 @@ export class FactoryDataAttributeConfig extends Factory {
     }
 
     getTarget(selectorString, element) {
-        if (selectorString == 'self') {
+        if (selectorString === 'self') {
             return element;
+        } else if (_startsWith(selectorString, 'relative::')) {
+            const parts = selectorString.split('::');
+            parts.shift(); // remove the 'relative' prefix
+            let result = element;
+            parts.forEach((part) => {
+                if (part === 'parent') {
+                    result = result.parentElement;
+                } else {
+                    result = result.querySelector(part);
+                }
+            });
+            return result;
         } else {
             return document.querySelector(selectorString);
         }
