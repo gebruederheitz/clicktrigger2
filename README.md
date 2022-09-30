@@ -51,6 +51,7 @@ as the DOM is ready:
 
 You may use and extend the default styles provided by this package in your
 (S)CSS:
+
 ```sass
 // Your frontend SASS file
 
@@ -172,5 +173,9 @@ npm run build
 make build
 ```
 to create the ES5 build at `dist/bundle.js`, the auto-init bundle at
-`dist/auto-bundle.js` and the ES-module build at `dist/index.mjs`.
-Bump the version number in `package.json` (or use `yarn publish`).
+`dist/auto-bundle.js` and the ES-module build at `dist/index.mjs` and make 
+certain everything runs smoothly. You should also run `make lint` at least once
+to avoid simple linting issues.
+
+When you're finished, you can use `make release` on the main branch to publish
+your changes.

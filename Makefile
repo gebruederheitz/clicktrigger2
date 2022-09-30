@@ -1,3 +1,4 @@
+# Watch sources and host demo content on http://localhost:8080
 dev:
 	. $$NVM_DIR/nvm.sh && nvm use && \
 	npm i && npm run watch
