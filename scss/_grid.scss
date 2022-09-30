@@ -36,7 +36,7 @@ $slide-duration: 300 !default;
         }
 
         &__#{$classname-component-target} {
-            @include mixins.slide-open($slide-duration, 'active');
+            @include mixins.slide-open($slide-duration, 'gh-ct-visible');
 
             grid-column: span $grid-column-count;
 

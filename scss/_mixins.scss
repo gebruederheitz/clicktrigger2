@@ -46,15 +46,13 @@
         margin-top #{$slide-duration}ms ease 0s,
         padding-bottom #{$slide-duration}ms ease 0s,
         padding-top #{$slide-duration}ms ease 0s,
-        opacity 0ms #{$slide-duration + 1}ms,
-        visibility 0ms #{$slide-duration + 1}ms;
+        opacity #{$slide-duration}ms,
+        visibility #{$slide-duration}ms;
 
     &.#{$visible-class} {
         max-height: 200vh;
         opacity: 1;
         visibility: visible;
-        transition: max-height #{$slide-duration}ms ease 1ms, opacity 0ms 0ms,
-            visibility 0ms 0ms;
         @content;
     }
 }
