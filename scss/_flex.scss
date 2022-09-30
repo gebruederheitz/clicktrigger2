@@ -4,13 +4,19 @@
 $breakpoint-medium: defaults.$breakpoint-medium !default;
 $breakpoint-large: defaults.$breakpoint-large !default;
 
-.gh-ct2--flex {
+$classname-common: defaults.$classname-common !default;
+$classmod-container: defaults.$classmod-flex-container !default;
+$classname-container: "#{$classname-common}--#{$classmod-container}" !default;
+$classname-component-trigger: defaults.$classname-component-trigger !default;
+$classname-component-target: defaults.$classname-component-target !default;
+
+.#{$classname-container} {
     display: flex;
     flex-flow: row wrap;
     justify-content: space-between;
 
-    .gh-ct2 {
-        &__trigger,
+    .#{$classname-common} {
+        &__#{$classname-component-trigger},
         [aria-controls] {
             display: flex;
             flex: 0 0 100%;
@@ -37,7 +43,7 @@ $breakpoint-large: defaults.$breakpoint-large !default;
             }
         }
 
-        &__target {
+        &__#{$classname-component-target} {
             @include mixins.slide-open(300, 'active');
 
             flex-basis: 100%;

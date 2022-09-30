@@ -3,6 +3,14 @@
 $breakpoint-medium: defaults.$breakpoint-medium !default;
 $breakpoint-large: defaults.$breakpoint-large !default;
 
+$classname-common: defaults.$classname-common !default;
+$classmod-flex-container: defaults.$classmod-flex-container !default;
+$classmod-grid-container: defaults.$classmod-grid-container !default;
+$classname-flex-container: "#{$classname-common}--#{$classmod-flex-container}" !default;
+$classname-grid-container: "#{$classname-common}--#{$classmod-grid-container}" !default;
+$classname-component-trigger: defaults.$classname-component-trigger !default;
+$classname-component-target: defaults.$classname-component-target !default;
+
 $grid-column-count: defaults.$grid-column-count !default;
 $trigger-span-small: defaults.$trigger-span-small !default;
 $trigger-span-medium: defaults.$trigger-span-medium !default;
@@ -14,7 +22,12 @@ $close-button-size: defaults.$close-button-size !default;
 @use './flex' with
     (
         $breakpoint-medium: $breakpoint-medium,
-        $breakpoint-large: $breakpoint-large
+        $breakpoint-large: $breakpoint-large,
+        $classname-common: $classname-common,
+        $classmod-container: $classmod-flex-container,
+        $classname-container: $classname-flex-container,
+        $classname-component-trigger: $classname-component-trigger,
+        $classname-component-target: $classname-component-target,
     );
 
 @use './grid' with
@@ -22,7 +35,12 @@ $close-button-size: defaults.$close-button-size !default;
         $grid-column-count: $grid-column-count,
         $trigger-span-small: $trigger-span-small,
         $trigger-span-medium: $trigger-span-medium,
-        $trigger-span-large: $trigger-span-large
+        $trigger-span-large: $trigger-span-large,
+        $classname-common: $classname-common,
+        $classmod-container: $classmod-grid-container,
+        $classname-container: $classname-grid-container,
+        $classname-component-trigger: $classname-component-trigger,
+        $classname-component-target: $classname-component-target,
     );
 
 @use './close-button' with
