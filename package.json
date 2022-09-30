@@ -57,7 +57,6 @@
     "eslint": "^7.30.0",
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-prettier": "^3.4.0",
-    "eslint-plugin-react": "^7.24.0",
     "esm": "^3.2.25",
     "gulp": "^4.0.2",
     "gulp-dart-sass": "^1.0.2",
