@@ -1,4 +1,4 @@
-node_version: &node_version '16'
+node_version: &node_version 'lts'
 source_dir: &source_dir clicktrigger2
 version: 2.1
 orbs:
