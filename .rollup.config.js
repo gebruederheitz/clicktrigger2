@@ -149,6 +149,7 @@ export default [
                     },
                 },
             }),
+            !production && serve(),
             !production && livereload({
                 watch: ['./demo/', './dist'],
             }),
