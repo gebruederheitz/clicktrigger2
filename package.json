@@ -21,7 +21,7 @@
     "watch:styles": "gulp watch"
   },
   "engines": {
-    "node": "^16"
+    "node": ">=16"
   },
   "repository": {
     "type": "git",
